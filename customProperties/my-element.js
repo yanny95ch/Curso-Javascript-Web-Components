@@ -24,14 +24,29 @@ class myElement extends HTMLElement {
     getStyles() {
       return `
         <style>
-            ::slotted(span){
-                font-size:30px;
-                color:green;
-            }
-            ::slotted(.text){
-                color: blue
-             }
-        </style>
+        :host{
+          --primary-color: tomato;
+          --secondary-color: salmon;
+          --heading-primary: 30px;
+          --heading-secondary: 25px;
+          display: inline-block;
+          width: 100%;
+          min-width: 300px;
+          max-width: 450px;
+        }
+        section {
+          background: var(--primary-color)
+        }
+        section div {
+          background: var(--secondary-color)
+        }
+        h1 {
+          font-size: var(--heading-primary)
+        }
+        p {
+          font-size: var(--heading-secondary)
+        }
+    </style>
       `;
     }
     render() {
@@ -43,5 +58,3 @@ class myElement extends HTMLElement {
   }
   
   customElements.define("my-element", myElement);
-
-  //Solo lo puedes Usar cuando tengas el ShadowDOM obligatoriamente
